@@ -140,14 +140,9 @@ export const ChatInterface = () => {
   }, []);
 
   return (
-    <div className="flex flex-col h-full bg-card/50 backdrop-blur-sm">
-      <div className="border-b bg-card px-4 py-3">
-        <h3 className="font-semibold text-sm">Collection Assistant</h3>
-        <p className="text-xs text-muted-foreground">Let me help you choose the best way to distribute your survey</p>
-      </div>
-      
+    <div className="flex flex-col h-full">
       <ScrollArea className="flex-1 px-4">
-        <div className="py-4">
+        <div className="max-w-3xl mx-auto py-6">
           {messages.map((message) => (
             <ChatMessage key={message.id} message={message} />
           ))}
