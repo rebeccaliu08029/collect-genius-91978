@@ -22,7 +22,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
       )}
     >
       {isAssistant && (
-        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-[hsl(280_85%_65%)] flex items-center justify-center">
+        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center">
           <Bot className="h-5 w-5 text-white" />
         </div>
       )}
