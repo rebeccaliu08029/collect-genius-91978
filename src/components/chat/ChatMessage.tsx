@@ -1,4 +1,4 @@
-import { Bot, User } from "lucide-react";
+import { Sparkles, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export type Message = {
@@ -23,7 +23,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
     >
       {isAssistant && (
         <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-[hsl(280_85%_65%)] flex items-center justify-center">
-          <Bot className="h-5 w-5 text-white" />
+          <Sparkles className="h-5 w-5 text-white" />
         </div>
       )}
       <div
