@@ -1,7 +1,12 @@
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, MessageSquare } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
-export const SurveyHeader = () => {
+interface SurveyHeaderProps {
+  onChatToggle: () => void;
+}
+
+export const SurveyHeader = ({ onChatToggle }: SurveyHeaderProps) => {
   return (
     <div className="border-b bg-card/50 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 py-4">
@@ -15,6 +20,10 @@ export const SurveyHeader = () => {
               <CheckCircle2 className="h-3.5 w-3.5 text-success" />
               10 Questions Ready
             </Badge>
+            <Button onClick={onChatToggle} variant="default" className="gap-2">
+              <MessageSquare className="h-4 w-4" />
+              Chat Assistant
+            </Button>
           </div>
         </div>
       </div>
