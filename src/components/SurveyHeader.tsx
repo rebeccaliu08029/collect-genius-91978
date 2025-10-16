@@ -10,40 +10,48 @@ export const SurveyHeader = ({ onChatToggle }: SurveyHeaderProps) => {
   return (
     <div className="bg-white border-b">
       {/* Top bar with title and actions */}
-      <div className="px-6 py-3 flex items-center justify-between border-b">
-        <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" className="h-8 w-8">
-            <Home className="h-4 w-4" />
-          </Button>
-          <div className="flex items-center gap-2">
-            <h1 className="text-base font-medium text-foreground">Product feedback survey</h1>
-            <Badge variant="outline" className="text-xs">Draft</Badge>
-            <Button variant="ghost" size="icon" className="h-6 w-6">
-              <MoreHorizontal className="h-4 w-4" />
+      <div className="px-6 py-3 border-b">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="icon" className="h-8 w-8">
+              <Home className="h-4 w-4" />
             </Button>
+            <div className="flex items-center gap-2">
+              <h1 className="text-base font-medium text-foreground">Product feedback survey</h1>
+              <Badge variant="outline" className="text-xs">Draft</Badge>
+              <Button variant="ghost" size="icon" className="h-6 w-6">
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="h-8 w-8 relative"
-            onClick={onChatToggle}
-          >
-            <MessageCircle className="h-4 w-4" />
-            <span className="absolute -top-1 -right-1 bg-muted text-muted-foreground text-[10px] font-medium px-1 rounded">12</span>
-          </Button>
-          <Button variant="ghost" size="icon" className="h-8 w-8">
-            <User className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon" className="h-8 w-8">
-            <Bell className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon" className="h-8 w-8">
-            <HelpCircle className="h-4 w-4" />
-          </Button>
-          <div className="h-8 w-8 rounded-full bg-success flex items-center justify-center text-white text-xs font-medium">
-            MM
+          <div className="flex flex-col items-end gap-2">
+            <div className="flex items-center gap-3">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="h-8 w-8 relative"
+                onClick={onChatToggle}
+              >
+                <MessageCircle className="h-4 w-4" />
+                <span className="absolute -top-1 -right-1 bg-muted text-muted-foreground text-[10px] font-medium px-1 rounded">12</span>
+              </Button>
+              <Button variant="ghost" size="icon" className="h-8 w-8">
+                <User className="h-4 w-4" />
+              </Button>
+              <Button variant="ghost" size="icon" className="h-8 w-8">
+                <Bell className="h-4 w-4" />
+              </Button>
+              <Button variant="ghost" size="icon" className="h-8 w-8">
+                <HelpCircle className="h-4 w-4" />
+              </Button>
+              <div className="h-8 w-8 rounded-full bg-success flex items-center justify-center text-white text-xs font-medium">
+                MM
+              </div>
+            </div>
+            <Button className="gap-2 bg-success hover:bg-success/90 text-white">
+              <Send className="h-4 w-4" />
+              Publish survey
+            </Button>
           </div>
         </div>
       </div>
@@ -67,10 +75,6 @@ export const SurveyHeader = ({ onChatToggle }: SurveyHeaderProps) => {
             <span>Analyze results</span>
           </div>
         </div>
-        <Button className="gap-2 bg-success hover:bg-success/90 text-white">
-          <Send className="h-4 w-4" />
-          Publish survey
-        </Button>
       </div>
     </div>
   );
