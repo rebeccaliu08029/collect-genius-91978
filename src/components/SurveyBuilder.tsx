@@ -134,31 +134,38 @@ export const SurveyBuilder = () => {
   };
 
   return (
-    <div className="h-full overflow-y-auto px-4 py-6">
-      <div className="max-w-3xl mx-auto space-y-6">
-        {questions.map((question, index) => (
-          <Card key={question.id} className="p-6 shadow-sm hover:shadow-md transition-shadow">
-            <div className="space-y-4">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Badge variant="secondary" className="text-xs">
-                      Q{index + 1}
-                    </Badge>
-                    <Badge variant="outline" className="text-xs capitalize">
-                      {question.type === "multipleChoice" ? "Multiple Choice" : question.type}
-                    </Badge>
+    <div className="h-full overflow-y-auto bg-muted/30">
+      <div className="max-w-4xl mx-auto px-6 py-8">
+        <div className="space-y-4">
+          {questions.map((question, index) => (
+            <Card key={question.id} className="p-6 border border-border bg-card shadow-sm hover:shadow-md transition-shadow">
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-8 h-8 rounded bg-muted flex items-center justify-center text-sm font-medium text-muted-foreground">
+                    Q{index + 1}
                   </div>
-                  <h3 className="text-lg font-medium">{question.title}</h3>
+                  <div className="flex-1 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <input 
+                        type="text"
+                        value={question.title}
+                        className="text-base font-normal bg-transparent border-none outline-none flex-1 text-foreground"
+                        readOnly
+                      />
+                      <Badge variant="outline" className="text-xs capitalize ml-4">
+                        {question.type === "multipleChoice" ? "Multiple Choice" : question.type === "text" ? "Open Text" : question.type}
+                      </Badge>
+                    </div>
+                    
+                    <div className="pt-2">
+                      {renderQuestionInput(question)}
+                    </div>
+                  </div>
                 </div>
               </div>
-              
-              <div className="pt-2">
-                {renderQuestionInput(question)}
-              </div>
-            </div>
-          </Card>
-        ))}
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   return (
-    <div className="flex flex-col h-screen bg-gradient-to-br from-background via-background to-muted/20">
+    <div className="flex flex-col h-screen bg-background">
       <SurveyHeader onChatToggle={() => setIsChatOpen(!isChatOpen)} />
       <main className="flex-1 overflow-hidden relative">
         <SurveyBuilder />
