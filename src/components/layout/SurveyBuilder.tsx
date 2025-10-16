@@ -62,7 +62,7 @@ export const SurveyBuilder = () => {
       </div>
 
       {/* Survey Canvas */}
-      <div className="p-8 flex justify-center">
+      <div className="p-8 flex justify-center overflow-y-auto">
         <div className="w-full max-w-4xl">
           <div className="bg-card rounded-lg shadow-md p-8 mb-6">
             <div className="flex items-center gap-2 mb-6">
@@ -118,13 +118,167 @@ export const SurveyBuilder = () => {
             </div>
 
             {/* Question 3 */}
-            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors">
+            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
               <div className="flex items-start gap-4">
                 <span className="font-medium text-muted-foreground">Q3</span>
                 <div className="flex-1">
                   <input
                     type="text"
                     defaultValue="What suggestions do you have for improvement?"
+                    className="w-full text-base border-0 border-b border-dashed border-border focus:border-primary outline-none pb-2 mb-4"
+                  />
+                  <div className="flex items-center justify-between">
+                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
+                      <option>Open Text</option>
+                    </select>
+                    <button className="text-muted-foreground hover:text-foreground">
+                      <Settings className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Question 4 */}
+            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
+              <div className="flex items-start gap-4">
+                <span className="font-medium text-muted-foreground">Q4</span>
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    defaultValue="How likely are you to recommend us to a friend?"
+                    className="w-full text-base border-0 border-b border-dashed border-border focus:border-primary outline-none pb-2 mb-4"
+                  />
+                  <div className="flex items-center justify-between">
+                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
+                      <option>Rating Scale</option>
+                    </select>
+                    <button className="text-muted-foreground hover:text-foreground">
+                      <Settings className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Question 5 */}
+            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
+              <div className="flex items-start gap-4">
+                <span className="font-medium text-muted-foreground">Q5</span>
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    defaultValue="How did you hear about us?"
+                    className="w-full text-base border-0 border-b border-dashed border-border focus:border-primary outline-none pb-2 mb-4"
+                  />
+                  <div className="flex items-center justify-between">
+                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
+                      <option>Multiple Choice</option>
+                    </select>
+                    <button className="text-muted-foreground hover:text-foreground">
+                      <Settings className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Question 6 */}
+            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
+              <div className="flex items-start gap-4">
+                <span className="font-medium text-muted-foreground">Q6</span>
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    defaultValue="What is your age range?"
+                    className="w-full text-base border-0 border-b border-dashed border-border focus:border-primary outline-none pb-2 mb-4"
+                  />
+                  <div className="flex items-center justify-between">
+                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
+                      <option>Multiple Choice</option>
+                    </select>
+                    <button className="text-muted-foreground hover:text-foreground">
+                      <Settings className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Question 7 */}
+            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
+              <div className="flex items-start gap-4">
+                <span className="font-medium text-muted-foreground">Q7</span>
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    defaultValue="What do you like most about our product?"
+                    className="w-full text-base border-0 border-b border-dashed border-border focus:border-primary outline-none pb-2 mb-4"
+                  />
+                  <div className="flex items-center justify-between">
+                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
+                      <option>Open Text</option>
+                    </select>
+                    <button className="text-muted-foreground hover:text-foreground">
+                      <Settings className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Question 8 */}
+            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
+              <div className="flex items-start gap-4">
+                <span className="font-medium text-muted-foreground">Q8</span>
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    defaultValue="How often do you use our service?"
+                    className="w-full text-base border-0 border-b border-dashed border-border focus:border-primary outline-none pb-2 mb-4"
+                  />
+                  <div className="flex items-center justify-between">
+                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
+                      <option>Multiple Choice</option>
+                    </select>
+                    <button className="text-muted-foreground hover:text-foreground">
+                      <Settings className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Question 9 */}
+            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
+              <div className="flex items-start gap-4">
+                <span className="font-medium text-muted-foreground">Q9</span>
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    defaultValue="What other products or services would you like to see?"
+                    className="w-full text-base border-0 border-b border-dashed border-border focus:border-primary outline-none pb-2 mb-4"
+                  />
+                  <div className="flex items-center justify-between">
+                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
+                      <option>Open Text</option>
+                    </select>
+                    <button className="text-muted-foreground hover:text-foreground">
+                      <Settings className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Question 10 */}
+            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors">
+              <div className="flex items-start gap-4">
+                <span className="font-medium text-muted-foreground">Q10</span>
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    defaultValue="Any additional comments or feedback?"
                     className="w-full text-base border-0 border-b border-dashed border-border focus:border-primary outline-none pb-2 mb-4"
                   />
                   <div className="flex items-center justify-between">
