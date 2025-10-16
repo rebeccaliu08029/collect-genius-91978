@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { ChatMessage, type Message } from "./chat/ChatMessage";
 import { QuickReply } from "./chat/QuickReply";
 import { CollectorRecommendation, type CollectorType, type CollectorSettings } from "./chat/CollectorRecommendation";
+import { FileDropzone } from "./chat/FileDropzone";
+import { EmailDraft } from "./chat/EmailDraft";
 import { toast } from "@/hooks/use-toast";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -24,11 +26,14 @@ export const ChatInterface = () => {
     type: CollectorType;
     reason: string;
   } | null>(null);
+  const [showFileDropzone, setShowFileDropzone] = useState(false);
+  const [showEmailDraft, setShowEmailDraft] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, showQuickReply, recommendation]);
+  }, [messages, showQuickReply, recommendation, showFileDropzone, showEmailDraft]);
 
   const scrollToBottom = () => {
     setTimeout(() => {
@@ -122,14 +127,38 @@ export const ChatInterface = () => {
     });
 
     if (recommendation?.type === "email") {
-      addMessage("assistant", "Perfect! Your email collector is configured. Next, you'll need to upload your contact list. You can do this now or come back to it later.", 500);
-      setCurrentStep("upload-contacts");
       setRecommendation(null);
+      addMessage("assistant", "Perfect! Your email collector is configured. Now, let's upload your contact list to get started.", 500);
+      setTimeout(() => {
+        setShowFileDropzone(true);
+      }, 1000);
+      setCurrentStep("upload-contacts");
     } else {
       addMessage("assistant", `Great! Your ${collectorName} is ready to use. You can now start collecting responses!`, 500);
       setCurrentStep("completed");
       setRecommendation(null);
     }
+  };
+
+  const handleFileSelect = (file: File) => {
+    setUploadedFile(file);
+    setShowFileDropzone(false);
+    addMessage("user", `Uploaded: ${file.name}`);
+    addMessage("assistant", `Great! I've received your contact list with ${Math.floor(Math.random() * 500 + 100)} contacts. Now let's draft your email invitation.`, 800);
+    setTimeout(() => {
+      setShowEmailDraft(true);
+    }, 1300);
+  };
+
+  const handleEmailSend = (subject: string, body: string) => {
+    setShowEmailDraft(false);
+    addMessage("user", "Send survey invitations");
+    addMessage("assistant", "🎉 Perfect! Your survey invitations are being sent. You'll receive a confirmation once all emails are delivered.", 500);
+    toast({
+      title: "Survey invitations sent!",
+      description: "Your emails are on their way to your contacts.",
+    });
+    setCurrentStep("completed");
   };
 
   // Initialize conversation
@@ -161,6 +190,14 @@ export const ChatInterface = () => {
               reason={recommendation.reason}
               onAccept={handleAcceptRecommendation}
             />
+          )}
+
+          {showFileDropzone && (
+            <FileDropzone onFileSelect={handleFileSelect} />
+          )}
+
+          {showEmailDraft && (
+            <EmailDraft onSend={handleEmailSend} />
           )}
           
           <div ref={scrollRef} />
