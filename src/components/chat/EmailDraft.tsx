@@ -3,8 +3,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
+import { Mail, Eye } from "lucide-react";
 import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import confetti from "canvas-confetti";
 
 interface EmailDraftProps {
   onSend: (subject: string, body: string) => void;
@@ -26,6 +33,22 @@ Thank you for taking the time to share your perspective!
 Best regards,
 [Your Name]`
   );
+  const [showPreview, setShowPreview] = useState(false);
+
+  const handleSend = () => {
+    // Trigger confetti animation
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+    onSend(subject, body);
+  };
+
+  const previewBody = body
+    .replace(/\[First Name\]/g, "John")
+    .replace(/\[Last Name\]/g, "Doe")
+    .replace(/\[Survey Link\]/g, "https://survey.example.com/xyz123");
 
   return (
     <Card className="border-2 animate-fade-in my-4">
@@ -63,13 +86,45 @@ Best regards,
             Use [First Name], [Last Name], and [Survey Link] for personalization
           </p>
         </div>
-        <Button
-          variant="gradient"
-          className="w-full"
-          onClick={() => onSend(subject, body)}
-        >
-          Send Survey Invitations
-        </Button>
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            className="flex-1"
+            onClick={() => setShowPreview(true)}
+          >
+            <Eye className="h-4 w-4 mr-2" />
+            Email Preview
+          </Button>
+          <Button
+            variant="gradient"
+            className="flex-1"
+            onClick={handleSend}
+          >
+            Send Survey Invitations
+          </Button>
+        </div>
+
+        <Dialog open={showPreview} onOpenChange={setShowPreview}>
+          <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>Email Preview</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4">
+              <div className="border-b pb-4">
+                <p className="text-sm text-muted-foreground">Subject</p>
+                <p className="font-semibold">{subject}</p>
+              </div>
+              <div className="bg-card p-6 rounded-lg border">
+                <pre className="whitespace-pre-wrap font-sans text-sm">
+                  {previewBody}
+                </pre>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                This is a preview with sample data. Actual emails will be personalized for each recipient.
+              </p>
+            </div>
+          </DialogContent>
+        </Dialog>
       </CardContent>
     </Card>
   );
