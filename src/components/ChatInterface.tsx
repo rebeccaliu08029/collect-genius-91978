@@ -4,6 +4,7 @@ import { QuickReply } from "./chat/QuickReply";
 import { CollectorRecommendation, type CollectorType, type CollectorSettings } from "./chat/CollectorRecommendation";
 import { FileDropzone } from "./chat/FileDropzone";
 import { EmailDraft } from "./chat/EmailDraft";
+import { CollectResponsesCTA } from "./chat/CollectResponsesCTA";
 import { toast } from "@/hooks/use-toast";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -29,11 +30,12 @@ export const ChatInterface = () => {
   const [showFileDropzone, setShowFileDropzone] = useState(false);
   const [showEmailDraft, setShowEmailDraft] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [showCollectCTA, setShowCollectCTA] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, showQuickReply, recommendation, showFileDropzone, showEmailDraft]);
+  }, [messages, showQuickReply, recommendation, showFileDropzone, showEmailDraft, showCollectCTA]);
 
   const scrollToBottom = () => {
     setTimeout(() => {
@@ -146,11 +148,23 @@ export const ChatInterface = () => {
     setShowEmailDraft(false);
     addMessage("user", "Send survey invitations");
     addMessage("assistant", "🎉 Perfect! Your survey invitations are being sent. You'll receive a confirmation once all emails are delivered.", 500);
+    addMessage("assistant", "You can view your collectors in the Collect responses step.", 1500);
+    setTimeout(() => {
+      setShowCollectCTA(true);
+    }, 2000);
     toast({
       title: "Survey invitations sent!",
       description: "Your emails are on their way to your contacts.",
     });
     setCurrentStep("completed");
+  };
+
+  const handleNavigateToCollect = () => {
+    toast({
+      title: "Navigating...",
+      description: "Opening Collect responses step",
+    });
+    // In a real implementation, this would navigate to the collect responses step
   };
 
   // Initialize conversation
@@ -190,6 +204,10 @@ export const ChatInterface = () => {
 
           {showEmailDraft && (
             <EmailDraft onSend={handleEmailSend} />
+          )}
+
+          {showCollectCTA && (
+            <CollectResponsesCTA onNavigate={handleNavigateToCollect} />
           )}
           
           <div ref={scrollRef} />
