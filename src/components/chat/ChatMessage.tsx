@@ -17,28 +17,28 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
   return (
     <div
       className={cn(
-        "flex gap-3 mb-4 animate-slide-up",
+        "flex gap-2 mb-3 animate-slide-up",
         isAssistant ? "justify-start" : "justify-end"
       )}
     >
       {isAssistant && (
-        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-[hsl(280_85%_65%)] flex items-center justify-center">
-          <Bot className="h-5 w-5 text-white" />
+        <div className="flex-shrink-0 w-7 h-7 rounded-full bg-success flex items-center justify-center">
+          <Bot className="h-4 w-4 text-white" />
         </div>
       )}
       <div
         className={cn(
-          "rounded-2xl px-4 py-3 max-w-[80%]",
+          "rounded-lg px-3 py-2 max-w-[75%] text-sm",
           isAssistant
             ? "bg-card border shadow-sm"
             : "bg-primary text-primary-foreground"
         )}
       >
-        <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
+        <p className="leading-relaxed whitespace-pre-wrap">{message.content}</p>
       </div>
       {!isAssistant && (
-        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
-          <User className="h-5 w-5 text-secondary-foreground" />
+        <div className="flex-shrink-0 w-7 h-7 rounded-full bg-muted flex items-center justify-center">
+          <User className="h-4 w-4 text-muted-foreground" />
         </div>
       )}
     </div>

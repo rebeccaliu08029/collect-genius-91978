@@ -70,44 +70,40 @@ export const CollectorRecommendation = ({ type, reason, onAccept }: CollectorRec
   });
 
   return (
-    <Card className="border-2 shadow-lg animate-slide-up">
-      <CardHeader className="pb-4">
+    <Card className="border shadow-md animate-slide-up ml-9">
+      <CardHeader className="pb-3">
         <div className="flex items-start justify-between">
-          <div className="flex items-center gap-3">
-            <div className={cn("p-2 rounded-lg bg-gradient-to-br", 
-              type === "email" ? "from-accent/10 to-accent/5" :
-              type === "weblink" ? "from-primary/10 to-primary/5" :
-              "from-success/10 to-success/5"
-            )}>
-              <Icon className={cn("h-6 w-6", config.color)} />
+          <div className="flex items-center gap-2">
+            <div className={cn("p-1.5 rounded bg-success/10")}>
+              <Icon className="h-5 w-5 text-success" />
             </div>
             <div>
-              <CardTitle className="text-xl mb-1">{config.title}</CardTitle>
-              <CardDescription>{config.description}</CardDescription>
+              <CardTitle className="text-base font-semibold">{config.title}</CardTitle>
+              <CardDescription className="text-xs">{config.description}</CardDescription>
             </div>
           </div>
-          <Badge variant="secondary" className="gap-1">
+          <Badge variant="secondary" className="gap-1 text-xs">
             <CheckCircle2 className="h-3 w-3" />
             Recommended
           </Badge>
         </div>
       </CardHeader>
       
-      <CardContent className="space-y-4">
-        <div className="p-3 rounded-lg bg-muted/50 border">
-          <div className="flex gap-2 mb-2">
-            <Info className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-            <p className="text-sm font-medium">Why this collector?</p>
+      <CardContent className="space-y-3 text-sm">
+        <div className="p-2.5 rounded bg-muted/50 border">
+          <div className="flex gap-2 mb-1">
+            <Info className="h-3.5 w-3.5 text-success flex-shrink-0 mt-0.5" />
+            <p className="text-xs font-medium">Why this collector?</p>
           </div>
-          <p className="text-sm text-muted-foreground ml-6">{reason}</p>
+          <p className="text-xs text-muted-foreground ml-5">{reason}</p>
         </div>
 
         <div>
-          <p className="text-sm font-medium mb-2">Key Benefits:</p>
-          <ul className="space-y-1.5">
+          <p className="text-xs font-medium mb-1.5">Key Benefits:</p>
+          <ul className="space-y-1">
             {config.benefits.map((benefit, index) => (
-              <li key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
+              <li key={index} className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <CheckCircle2 className="h-3.5 w-3.5 text-success flex-shrink-0" />
                 {benefit}
               </li>
             ))}
@@ -116,11 +112,11 @@ export const CollectorRecommendation = ({ type, reason, onAccept }: CollectorRec
 
         <Separator />
 
-        <div className="space-y-3">
-          <p className="text-sm font-medium">Collection Settings:</p>
+        <div className="space-y-2">
+          <p className="text-xs font-medium">Collection Settings:</p>
           
           <div className="flex items-center justify-between">
-            <Label htmlFor="anonymize" className="text-sm cursor-pointer">
+            <Label htmlFor="anonymize" className="text-xs cursor-pointer">
               Anonymize responses
             </Label>
             <Switch
@@ -133,7 +129,7 @@ export const CollectorRecommendation = ({ type, reason, onAccept }: CollectorRec
 
           {type === "email" && (
             <div className="flex items-center justify-between">
-              <Label htmlFor="tracking" className="text-sm cursor-pointer">
+              <Label htmlFor="tracking" className="text-xs cursor-pointer">
                 Track response status
               </Label>
               <Switch
@@ -145,7 +141,7 @@ export const CollectorRecommendation = ({ type, reason, onAccept }: CollectorRec
           )}
 
           <div className="flex items-center justify-between">
-            <Label htmlFor="autoClose" className="text-sm cursor-pointer">
+            <Label htmlFor="autoClose" className="text-xs cursor-pointer">
               Auto-close after 100 responses
             </Label>
             <Switch
@@ -157,9 +153,7 @@ export const CollectorRecommendation = ({ type, reason, onAccept }: CollectorRec
         </div>
 
         <Button
-          variant="gradient"
-          className="w-full"
-          size="lg"
+          className="w-full bg-success hover:bg-success/90"
           onClick={() => onAccept(settings)}
         >
           {type === "email" ? "Upload Contacts & Continue" : 
