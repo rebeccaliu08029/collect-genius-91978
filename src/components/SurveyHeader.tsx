@@ -67,7 +67,7 @@ export const SurveyHeader = ({ onChatToggle }: SurveyHeaderProps) => {
             <span>Analyze results</span>
           </div>
         </div>
-        <Button className="gap-2 bg-success hover:bg-success/90 text-white">
+        <Button className="gap-2 bg-[hsl(152_69%_31%)] hover:bg-[hsl(152_69%_25%)] text-white">
           <Send className="h-4 w-4" />
           Publish survey
         </Button>
