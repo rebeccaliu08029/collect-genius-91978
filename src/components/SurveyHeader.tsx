@@ -1,4 +1,4 @@
-import { CheckCircle2, MessageSquare, Home, MessageCircle, Bell, HelpCircle, User, MoreHorizontal, Send } from "lucide-react";
+import { CheckCircle2, MessageSquare, Home, MessageCircle, Bell, HelpCircle, User, MoreHorizontal, Send, Plus, Wand2, Lightbulb, Archive, Settings, Type, Trash2, Printer, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -71,6 +71,48 @@ export const SurveyHeader = ({ onChatToggle }: SurveyHeaderProps) => {
           <Send className="h-4 w-4" />
           Publish survey
         </Button>
+      </div>
+
+      {/* Toolbar */}
+      <div className="px-6 py-3 flex items-center justify-between border-b bg-background">
+        <div className="flex items-center gap-4">
+          <Button variant="ghost" className="gap-2 text-sm">
+            <Plus className="h-4 w-4" />
+            Build
+          </Button>
+          <Button variant="ghost" className="gap-2 text-sm">
+            <Wand2 className="h-4 w-4" />
+            Style
+          </Button>
+          <Button variant="ghost" className="gap-2 text-sm">
+            <Lightbulb className="h-4 w-4" />
+            Logic
+          </Button>
+          <Button variant="ghost" className="gap-2 text-sm">
+            <Archive className="h-4 w-4" />
+            Question bank
+          </Button>
+        </div>
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" className="gap-2 text-sm">
+            <Settings className="h-4 w-4" />
+            Options
+          </Button>
+          <Button variant="ghost" className="gap-2 text-sm">
+            <Type className="h-4 w-4" />
+            Format
+          </Button>
+          <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Trash2 className="h-4 w-4" />
+          </Button>
+          <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Printer className="h-4 w-4" />
+          </Button>
+          <Button variant="ghost" className="gap-2 text-sm">
+            Preview
+            <ExternalLink className="h-3.5 w-3.5" />
+          </Button>
+        </div>
       </div>
     </div>
   );
