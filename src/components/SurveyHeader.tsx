@@ -1,4 +1,4 @@
-import { CheckCircle2, MessageSquare, Home, MessageCircle, Bell, HelpCircle, User, MoreHorizontal, Send, Plus, Wand2, Lightbulb, Archive, Settings, Type, Trash2, Printer, ExternalLink } from "lucide-react";
+import { CheckCircle2, MessageSquare, Home, Sparkles, Bell, HelpCircle, User, MoreHorizontal, Send, Plus, Wand2, Lightbulb, Archive, Settings, Type, Trash2, Printer, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -30,7 +30,7 @@ export const SurveyHeader = ({ onChatToggle }: SurveyHeaderProps) => {
             className="h-8 w-8 relative"
             onClick={onChatToggle}
           >
-            <MessageCircle className="h-4 w-4" />
+            <Sparkles className="h-4 w-4" />
             <span className="absolute -top-1 -right-1 bg-muted text-muted-foreground text-[10px] font-medium px-1 rounded">12</span>
           </Button>
           <Button variant="ghost" size="icon" className="h-8 w-8">
