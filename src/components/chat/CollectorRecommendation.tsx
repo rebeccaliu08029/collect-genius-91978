@@ -1,4 +1,4 @@
-import { Mail, Link2, Users, CheckCircle2, Info, ChevronDown } from "lucide-react";
+import { Mail, Link2, Users, CheckCircle2, Info, ChevronDown, Copy, Check } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -69,6 +69,20 @@ export const CollectorRecommendation = ({ type, reason, onAccept }: CollectorRec
     tracking: type === "email",
     autoClose: false,
   });
+  
+  const [generatedLink, setGeneratedLink] = useState<string>("");
+  const [copied, setCopied] = useState(false);
+
+  const handleGenerateLink = () => {
+    const link = `https://surveymonkey.com/r/${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
+    setGeneratedLink(link);
+  };
+
+  const handleCopyLink = async () => {
+    await navigator.clipboard.writeText(generatedLink);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <Card className="border-2 shadow-lg animate-slide-up">
@@ -173,16 +187,43 @@ export const CollectorRecommendation = ({ type, reason, onAccept }: CollectorRec
           </div>
         </div>
 
-        <Button
-          variant="gradient"
-          className="w-full"
-          size="lg"
-          onClick={() => onAccept(settings)}
-        >
-          {type === "email" ? "Upload Contacts & Continue" : 
-           type === "weblink" ? "Generate Link" :
-           "Browse Audience Options"}
-        </Button>
+        {type === "weblink" && generatedLink ? (
+          <div className="space-y-3">
+            <div className="p-3 bg-muted rounded-lg border">
+              <p className="text-xs text-muted-foreground mb-1">Your survey link:</p>
+              <p className="text-sm font-mono break-all">{generatedLink}</p>
+            </div>
+            <Button
+              variant="gradient"
+              className="w-full"
+              size="lg"
+              onClick={handleCopyLink}
+            >
+              {copied ? (
+                <>
+                  <Check className="h-4 w-4" />
+                  Copied!
+                </>
+              ) : (
+                <>
+                  <Copy className="h-4 w-4" />
+                  Copy Link
+                </>
+              )}
+            </Button>
+          </div>
+        ) : (
+          <Button
+            variant="gradient"
+            className="w-full"
+            size="lg"
+            onClick={() => type === "weblink" ? handleGenerateLink() : onAccept(settings)}
+          >
+            {type === "email" ? "Upload Contacts & Continue" : 
+             type === "weblink" ? "Generate Link" :
+             "Browse Audience Options"}
+          </Button>
+        )}
       </CardContent>
     </Card>
   );
