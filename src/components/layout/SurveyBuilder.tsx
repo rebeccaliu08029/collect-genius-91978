@@ -71,179 +71,21 @@ export const SurveyBuilder = () => {
               </Button>
             </div>
             
-            <h2 className="text-xl font-semibold text-success mb-8">Customer Feedback Survey</h2>
+            <h2 className="text-xl font-semibold text-success mb-8">Untitled</h2>
             
-            {/* Question 1 */}
-            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
+            {/* Question */}
+            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors">
               <div className="flex items-start gap-4">
                 <span className="font-medium text-muted-foreground">Q1</span>
                 <div className="flex-1">
-                  <div className="text-base pb-2 mb-4">How satisfied are you with our product overall?</div>
-                  <div className="flex items-center justify-between">
-                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
-                      <option>Rating Scale</option>
-                    </select>
-                    <button className="text-muted-foreground hover:text-foreground">
-                      <Settings className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Question 2 */}
-            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
-              <div className="flex items-start gap-4">
-                <span className="font-medium text-muted-foreground">Q2</span>
-                <div className="flex-1">
-                  <div className="text-base pb-2 mb-4">Which features do you use most frequently? (Select all that apply)</div>
+                  <input
+                    type="text"
+                    placeholder="Enter your question"
+                    className="w-full text-base border-0 border-b border-dashed border-border focus:border-primary outline-none pb-2 mb-4"
+                  />
                   <div className="flex items-center justify-between">
                     <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
                       <option>Multiple Choice</option>
-                    </select>
-                    <button className="text-muted-foreground hover:text-foreground">
-                      <Settings className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Question 3 */}
-            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
-              <div className="flex items-start gap-4">
-                <span className="font-medium text-muted-foreground">Q3</span>
-                <div className="flex-1">
-                  <div className="text-base pb-2 mb-4">How likely are you to recommend our product to a colleague or friend?</div>
-                  <div className="flex items-center justify-between">
-                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
-                      <option>Net Promoter Score</option>
-                    </select>
-                    <button className="text-muted-foreground hover:text-foreground">
-                      <Settings className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Question 4 */}
-            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
-              <div className="flex items-start gap-4">
-                <span className="font-medium text-muted-foreground">Q4</span>
-                <div className="flex-1">
-                  <div className="text-base pb-2 mb-4">How would you rate the ease of use of our product?</div>
-                  <div className="flex items-center justify-between">
-                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
-                      <option>Rating Scale</option>
-                    </select>
-                    <button className="text-muted-foreground hover:text-foreground">
-                      <Settings className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Question 5 */}
-            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
-              <div className="flex items-start gap-4">
-                <span className="font-medium text-muted-foreground">Q5</span>
-                <div className="flex-1">
-                  <div className="text-base pb-2 mb-4">What improvements would you like to see in future updates?</div>
-                  <div className="flex items-center justify-between">
-                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
-                      <option>Open Text</option>
-                    </select>
-                    <button className="text-muted-foreground hover:text-foreground">
-                      <Settings className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Question 6 */}
-            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
-              <div className="flex items-start gap-4">
-                <span className="font-medium text-muted-foreground">Q6</span>
-                <div className="flex-1">
-                  <div className="text-base pb-2 mb-4">How responsive is our customer support team?</div>
-                  <div className="flex items-center justify-between">
-                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
-                      <option>Rating Scale</option>
-                    </select>
-                    <button className="text-muted-foreground hover:text-foreground">
-                      <Settings className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Question 7 */}
-            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
-              <div className="flex items-start gap-4">
-                <span className="font-medium text-muted-foreground">Q7</span>
-                <div className="flex-1">
-                  <div className="text-base pb-2 mb-4">How often do you use our product?</div>
-                  <div className="flex items-center justify-between">
-                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
-                      <option>Multiple Choice</option>
-                    </select>
-                    <button className="text-muted-foreground hover:text-foreground">
-                      <Settings className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Question 8 */}
-            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
-              <div className="flex items-start gap-4">
-                <span className="font-medium text-muted-foreground">Q8</span>
-                <div className="flex-1">
-                  <div className="text-base pb-2 mb-4">What is your primary use case for our product?</div>
-                  <div className="flex items-center justify-between">
-                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
-                      <option>Multiple Choice</option>
-                    </select>
-                    <button className="text-muted-foreground hover:text-foreground">
-                      <Settings className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Question 9 */}
-            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
-              <div className="flex items-start gap-4">
-                <span className="font-medium text-muted-foreground">Q9</span>
-                <div className="flex-1">
-                  <div className="text-base pb-2 mb-4">How does our product compare to similar solutions you've used?</div>
-                  <div className="flex items-center justify-between">
-                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
-                      <option>Rating Scale</option>
-                    </select>
-                    <button className="text-muted-foreground hover:text-foreground">
-                      <Settings className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Question 10 */}
-            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
-              <div className="flex items-start gap-4">
-                <span className="font-medium text-muted-foreground">Q10</span>
-                <div className="flex-1">
-                  <div className="text-base pb-2 mb-4">Any additional comments or suggestions?</div>
-                  <div className="flex items-center justify-between">
-                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
-                      <option>Open Text</option>
                     </select>
                     <button className="text-muted-foreground hover:text-foreground">
                       <Settings className="h-4 w-4" />
