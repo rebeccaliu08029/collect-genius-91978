@@ -16,7 +16,7 @@ export const SurveyHeader = ({ onChatToggle }: SurveyHeaderProps) => {
             <Home className="h-4 w-4" />
           </Button>
           <div className="flex items-center gap-2">
-            <h1 className="text-base font-medium text-foreground">UMUX In Product Feedback Survey</h1>
+            <h1 className="text-base font-medium text-foreground">Product feedback survey</h1>
             <Badge variant="outline" className="text-xs">Draft</Badge>
             <Button variant="ghost" size="icon" className="h-6 w-6">
               <MoreHorizontal className="h-4 w-4" />
