@@ -1,10 +1,11 @@
-import { Mail, Link2, Users, CheckCircle2, Info } from "lucide-react";
+import { Mail, Link2, Users, CheckCircle2, Info, ChevronDown } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { useState } from "react";
 
 export type CollectorType = "email" | "weblink" | "audience";
@@ -94,25 +95,41 @@ export const CollectorRecommendation = ({ type, reason, onAccept }: CollectorRec
       </CardHeader>
       
       <CardContent className="space-y-4">
-        <div className="p-3 rounded-lg bg-muted/50 border">
-          <div className="flex gap-2 mb-2">
-            <Info className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-            <p className="text-sm font-medium">Why this collector?</p>
-          </div>
-          <p className="text-sm text-muted-foreground ml-6">{reason}</p>
-        </div>
+        <Collapsible>
+          <CollapsibleTrigger className="w-full">
+            <div className="p-3 rounded-lg bg-muted/50 border hover:bg-muted/70 transition-colors">
+              <div className="flex gap-2 items-center justify-between">
+                <div className="flex gap-2">
+                  <Info className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                  <p className="text-sm font-medium">Why this collector?</p>
+                </div>
+                <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+              </div>
+            </div>
+          </CollapsibleTrigger>
+          <CollapsibleContent>
+            <p className="text-sm text-muted-foreground ml-6 mt-2 mb-4">{reason}</p>
+          </CollapsibleContent>
+        </Collapsible>
 
-        <div>
-          <p className="text-sm font-medium mb-2">Key Benefits:</p>
-          <ul className="space-y-1.5">
-            {config.benefits.map((benefit, index) => (
-              <li key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
-                {benefit}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <Collapsible>
+          <CollapsibleTrigger className="w-full">
+            <div className="flex items-center justify-between p-2 rounded-lg hover:bg-muted/50 transition-colors">
+              <p className="text-sm font-medium">Key Benefits:</p>
+              <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+            </div>
+          </CollapsibleTrigger>
+          <CollapsibleContent>
+            <ul className="space-y-1.5 mt-2">
+              {config.benefits.map((benefit, index) => (
+                <li key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+          </CollapsibleContent>
+        </Collapsible>
 
         <Separator />
 
