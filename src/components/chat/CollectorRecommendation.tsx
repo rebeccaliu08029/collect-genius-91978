@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export type CollectorType = "email" | "weblink" | "audience";
 
@@ -73,10 +73,12 @@ export const CollectorRecommendation = ({ type, reason, onAccept }: CollectorRec
   const [generatedLink, setGeneratedLink] = useState<string>("");
   const [copied, setCopied] = useState(false);
 
-  const handleGenerateLink = () => {
-    const link = `https://surveymonkey.com/r/${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
-    setGeneratedLink(link);
-  };
+  useEffect(() => {
+    if (type === "weblink") {
+      const link = `https://surveymonkey.com/r/${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
+      setGeneratedLink(link);
+    }
+  }, [type]);
 
   const handleCopyLink = async () => {
     await navigator.clipboard.writeText(generatedLink);
@@ -187,7 +189,7 @@ export const CollectorRecommendation = ({ type, reason, onAccept }: CollectorRec
           </div>
         </div>
 
-        {type === "weblink" && generatedLink ? (
+        {type === "weblink" ? (
           <div className="space-y-3">
             <div className="p-3 bg-muted rounded-lg border">
               <p className="text-xs text-muted-foreground mb-1">Your survey link:</p>
@@ -217,10 +219,9 @@ export const CollectorRecommendation = ({ type, reason, onAccept }: CollectorRec
             variant="gradient"
             className="w-full"
             size="lg"
-            onClick={() => type === "weblink" ? handleGenerateLink() : onAccept(settings)}
+            onClick={() => onAccept(settings)}
           >
             {type === "email" ? "Upload Contacts & Continue" : 
-             type === "weblink" ? "Generate Link" :
              "Browse Audience Options"}
           </Button>
         )}
