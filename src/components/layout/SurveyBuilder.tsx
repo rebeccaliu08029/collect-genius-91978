@@ -73,19 +73,63 @@ export const SurveyBuilder = () => {
             
             <h2 className="text-xl font-semibold text-success mb-8">Untitled</h2>
             
-            {/* Question */}
-            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors">
+            {/* Question 1 */}
+            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
               <div className="flex items-start gap-4">
                 <span className="font-medium text-muted-foreground">Q1</span>
                 <div className="flex-1">
                   <input
                     type="text"
-                    placeholder="Enter your question"
+                    defaultValue="How satisfied are you with our service?"
+                    className="w-full text-base border-0 border-b border-dashed border-border focus:border-primary outline-none pb-2 mb-4"
+                  />
+                  <div className="flex items-center justify-between">
+                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
+                      <option>Rating Scale</option>
+                    </select>
+                    <button className="text-muted-foreground hover:text-foreground">
+                      <Settings className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Question 2 */}
+            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors mb-4">
+              <div className="flex items-start gap-4">
+                <span className="font-medium text-muted-foreground">Q2</span>
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    defaultValue="Which features do you use most often?"
                     className="w-full text-base border-0 border-b border-dashed border-border focus:border-primary outline-none pb-2 mb-4"
                   />
                   <div className="flex items-center justify-between">
                     <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
                       <option>Multiple Choice</option>
+                    </select>
+                    <button className="text-muted-foreground hover:text-foreground">
+                      <Settings className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Question 3 */}
+            <div className="border-2 border-border rounded-lg p-6 hover:border-primary/50 transition-colors">
+              <div className="flex items-start gap-4">
+                <span className="font-medium text-muted-foreground">Q3</span>
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    defaultValue="What suggestions do you have for improvement?"
+                    className="w-full text-base border-0 border-b border-dashed border-border focus:border-primary outline-none pb-2 mb-4"
+                  />
+                  <div className="flex items-center justify-between">
+                    <select className="text-sm border border-border rounded px-3 py-1.5 bg-background">
+                      <option>Open Text</option>
                     </select>
                     <button className="text-muted-foreground hover:text-foreground">
                       <Settings className="h-4 w-4" />
