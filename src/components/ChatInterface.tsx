@@ -117,15 +117,6 @@ export const ChatInterface = () => {
   };
 
   const handleAcceptRecommendation = (settings: CollectorSettings) => {
-    const collectorName = recommendation?.type === "email" ? "Email Collector" :
-                          recommendation?.type === "weblink" ? "Web Link" :
-                          "Audience Panel";
-    
-    toast({
-      title: "Collector configured!",
-      description: `Your ${collectorName} has been set up successfully.`,
-    });
-
     if (recommendation?.type === "email") {
       setRecommendation(null);
       addMessage("assistant", "Perfect! Your email collector is configured. Now, let's upload your contact list to get started.", 500);
@@ -134,6 +125,7 @@ export const ChatInterface = () => {
       }, 1000);
       setCurrentStep("upload-contacts");
     } else {
+      const collectorName = recommendation?.type === "weblink" ? "Web Link" : "Audience Panel";
       addMessage("assistant", `Great! Your ${collectorName} is ready to use. You can now start collecting responses!`, 500);
       setCurrentStep("completed");
       setRecommendation(null);
