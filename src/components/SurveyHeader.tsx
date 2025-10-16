@@ -1,4 +1,4 @@
-import { CheckCircle2, MessageSquare } from "lucide-react";
+import { CheckCircle2, MessageSquare, Home, MessageCircle, Bell, HelpCircle, User, MoreHorizontal, Send } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -8,30 +8,64 @@ interface SurveyHeaderProps {
 
 export const SurveyHeader = ({ onChatToggle }: SurveyHeaderProps) => {
   return (
-    <div className="border-b bg-[hsl(210_15%_15%)] text-white">
-      <div className="px-6 py-3">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-medium mb-0.5">Untitled</h1>
-            <div className="flex items-center gap-4 text-xs text-muted-foreground">
-              <span className="text-white/60">SUMMARY</span>
-              <span className="text-success font-medium">DESIGN SURVEY</span>
-              <span className="text-white/60">CONNECT APPS</span>
-              <span className="text-white/60">COLLECT RESPONSES</span>
-              <span className="text-white/60">ANALYZE RESULTS</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <Badge variant="secondary" className="gap-2 bg-white/10 text-white border-white/20">
-              <CheckCircle2 className="h-3.5 w-3.5 text-success" />
-              10 Questions
-            </Badge>
-            <Button onClick={onChatToggle} className="gap-2 bg-accent hover:bg-accent/90 text-accent-foreground">
-              <MessageSquare className="h-4 w-4" />
-              Chat Assistant
+    <div className="bg-white border-b">
+      {/* Top bar with title and actions */}
+      <div className="px-6 py-3 flex items-center justify-between border-b">
+        <div className="flex items-center gap-3">
+          <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Home className="h-4 w-4" />
+          </Button>
+          <div className="flex items-center gap-2">
+            <h1 className="text-base font-medium text-foreground">UMUX In Product Feedback Survey</h1>
+            <Badge variant="outline" className="text-xs">Draft</Badge>
+            <Button variant="ghost" size="icon" className="h-6 w-6">
+              <MoreHorizontal className="h-4 w-4" />
             </Button>
           </div>
         </div>
+        <div className="flex items-center gap-3">
+          <Button variant="ghost" size="icon" className="h-8 w-8 relative">
+            <MessageCircle className="h-4 w-4" />
+            <span className="absolute -top-1 -right-1 bg-muted text-muted-foreground text-[10px] font-medium px-1 rounded">12</span>
+          </Button>
+          <Button variant="ghost" size="icon" className="h-8 w-8">
+            <User className="h-4 w-4" />
+          </Button>
+          <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Bell className="h-4 w-4" />
+          </Button>
+          <Button variant="ghost" size="icon" className="h-8 w-8">
+            <HelpCircle className="h-4 w-4" />
+          </Button>
+          <div className="h-8 w-8 rounded-full bg-success flex items-center justify-center text-white text-xs font-medium">
+            MM
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation steps */}
+      <div className="px-6 py-3 flex items-center justify-between bg-muted/20">
+        <div className="flex items-center gap-8">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <span>Summary</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm font-medium text-success border-b-2 border-success pb-3 -mb-3">
+            <span>Design survey</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <span>Collect responses</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <span>Connect apps</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <span>Analyze results</span>
+          </div>
+        </div>
+        <Button onClick={onChatToggle} className="gap-2 bg-success hover:bg-success/90 text-white">
+          <Send className="h-4 w-4" />
+          Publish survey
+        </Button>
       </div>
     </div>
   );
