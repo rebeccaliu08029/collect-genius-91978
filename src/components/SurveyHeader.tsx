@@ -24,7 +24,12 @@ export const SurveyHeader = ({ onChatToggle }: SurveyHeaderProps) => {
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" className="h-8 w-8 relative">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="h-8 w-8 relative"
+            onClick={onChatToggle}
+          >
             <MessageCircle className="h-4 w-4" />
             <span className="absolute -top-1 -right-1 bg-muted text-muted-foreground text-[10px] font-medium px-1 rounded">12</span>
           </Button>
@@ -62,7 +67,7 @@ export const SurveyHeader = ({ onChatToggle }: SurveyHeaderProps) => {
             <span>Analyze results</span>
           </div>
         </div>
-        <Button onClick={onChatToggle} className="gap-2 bg-success hover:bg-success/90 text-white">
+        <Button className="gap-2 bg-success hover:bg-success/90 text-white">
           <Send className="h-4 w-4" />
           Publish survey
         </Button>
