@@ -5,7 +5,6 @@ import { CollectorRecommendation, type CollectorType, type CollectorSettings } f
 import { FileDropzone } from "./chat/FileDropzone";
 import { EmailDraft } from "./chat/EmailDraft";
 import { CollectResponsesCTA } from "./chat/CollectResponsesCTA";
-import { toast } from "@/hooks/use-toast";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 type ConversationStep = 
@@ -152,18 +151,10 @@ export const ChatInterface = () => {
     setTimeout(() => {
       setShowCollectCTA(true);
     }, 2000);
-    toast({
-      title: "Survey invitations sent!",
-      description: "Your emails are on their way to your contacts.",
-    });
     setCurrentStep("completed");
   };
 
   const handleNavigateToCollect = () => {
-    toast({
-      title: "Navigating...",
-      description: "Opening Collect responses step",
-    });
     // In a real implementation, this would navigate to the collect responses step
   };
 
