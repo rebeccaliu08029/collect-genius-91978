@@ -15,8 +15,8 @@ const Index = () => {
         <SurveyBuilder />
         {/* Chat overlay on the right */}
         <div 
-          className={`fixed right-0 top-[73px] bottom-0 w-[400px] bg-card/95 backdrop-blur-sm border-l shadow-lg transition-transform duration-300 ${
-            isChatOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`fixed right-0 top-[73px] bottom-0 w-[400px] bg-card/95 backdrop-blur-sm border-l shadow-lg transition-all duration-300 ease-in-out ${
+            isChatOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
           }`}
         >
           <div className="flex items-center justify-between p-4 border-b">
